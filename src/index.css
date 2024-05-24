@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navbar {
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar.hide {
+  transform: translateY(100%);
+}

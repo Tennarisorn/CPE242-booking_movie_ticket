@@ -2,12 +2,9 @@ import React from "react";
 
 const ProductFilter = ({ filter, setFilter }) => {
   const sortingOptions = [
-    { value: "", label: "ທັງໝົດ" },
-    { value: "bestseller", label: "ຂາຍດີ" },
-    { value: "newArrivals", label: "ມາໃໝ່" },
-    { value: "lowtohigh", label: "ລາຄາ: ຕ່ຳ - ສູງ" },
-    { value: "hightolow", label: "ລາຄາ: ສູງ - ຕ່ຳ" },
-    { value: "discount", label: "Sale" },
+    { value: "", label: "ทั่วไป" },
+    { value: "bestseller", label: "ยอดนิยม" },
+    { value: "newArrivals", label: "มาแรง" },
   ];
   return (
     <div className="flex flex-col sm:flex-row items-center mb-10 justify-between border-b border-gray-200 pb-6 pt-14">

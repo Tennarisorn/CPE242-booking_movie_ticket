@@ -18,7 +18,7 @@ const Pagination = ({ page, pageSize, totalItems, onPageChange }) => {
         <RiArrowLeftSLine size={20} />
       </button>
       <span className="mx-2 text-neutral-500">
-        Page {page} of {totalPages}
+        Page {page} of {1}
       </span>
       <button
         className="btn btn-sm"

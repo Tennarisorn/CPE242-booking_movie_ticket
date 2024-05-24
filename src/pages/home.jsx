@@ -1,18 +1,22 @@
 "use strict";
+import React, { useState } from "react";
 import { NavbarFlow } from "../component/navbar";
 import Footer from "../component/footer";
 import Megabar from "../component/megabar";
 import Imageslider2 from "../component/imageslider";
-import MovieCard from "../component/moviecard";
 import Products from "../component/Product";
+import ProductSearchForm from "../component/ProductSearchForm";
 
 export function Home() {
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  console.log('this is logged from parent component',filteredProducts);
   return (
     <div>
-      <NavbarFlow />
+      {/* <NavbarFlow /> */}
       <Megabar />
       <Imageslider2 />
-      <Products />
+      <ProductSearchForm setFilteredProducts={setFilteredProducts} />
+      <Products props={filteredProducts} />
       <Footer />
     </div>
   );

@@ -18,8 +18,8 @@ export function Login() {
         className="mr-2"
         gradientDuoTone="pinkToOrange"
         onClick={() => setOpenModal(true)}
-          >
-        Login
+      >
+        <span className="text-lg">Login</span>
       </Button>
       <Modal show={openModal} size="md" onClose={onCloseModal} popup>
         <Modal.Header />
