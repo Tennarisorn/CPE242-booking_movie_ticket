@@ -1,4 +1,4 @@
-import { Label, TextInput, FileInput, Button } from "flowbite-react";
+import { Label, TextInput, FileInput, Button, Select } from "flowbite-react";
 import {
   HiMail,
   HiUser,
@@ -11,7 +11,7 @@ import React, { useState, useEffect } from "react";
 
 function SignUp() {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-[115vh]">
       <div className="hidden lg:flex items-center justify-center flex-1 bg-white text-black">
         <div className="max-w-md text-center">
           <img
@@ -25,18 +25,18 @@ function SignUp() {
       </div>
       <div className="w-full bg-gray-100 lg:w-1/2 flex items-center justify-center">
         <div className="max-w-md w-full p-6">
-          <h1 className="text-3xl font-semibold mb-6 text-black text-center">
+          <div className="text-3xl font-semibold mb-6 text-black text-center">
             Sign Up
-          </h1>
-          <h1 className="text-sm font-semibold mb-6 text-gray-500 text-center">
-            Join to Our Community with all time access and free
-          </h1>
-          <div className="mt-4 flex flex-col lg:flex-row items-center justify-between"></div>
+          </div>
+          <div className=" flex flex-col lg:flex-row items-center justify-between"></div>
           <RegisterForm />
-          <div className="mt-4 text-sm text-gray-600 text-center">
+          <div className=" text-sm text-gray-600 text-center">
             <p>
               Already have an account?{" "}
-              <Link to="/" className="text-orange-600 hover:underline font-bold">
+              <Link
+                to="/"
+                className="text-orange-600 hover:underline font-bold"
+              >
                 Login here
               </Link>
             </p>
@@ -56,6 +56,8 @@ function RegisterForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [reenterPassword, setReenterPassword] = useState("");
+  const [creditno, setCreditno] = useState("");
+  const [cvv, setCvv] = useState("");
   const [image, setImage] = useState(null);
   const [passwordMatch, setPasswordMatch] = useState(true);
 
@@ -186,6 +188,33 @@ function RegisterForm() {
           required
           value={reenterPassword}
           onChange={(e) => setReenterPassword(e.target.value)}
+        />
+        <Label htmlFor="type" value="Select your credit type" />
+        <Select id="type" required>
+          <option>Credit Card</option>
+          <option>Debit Card</option>
+          <option>PayPal</option>
+          <option>Mobile Payment</option>
+        </Select>
+        <Label htmlFor="creditno" value="CreditNo." />
+        <TextInput
+          id="creditno"
+          type="text"
+          icon={HiKey}
+          placeholder="Enter Credit Card Number"
+          required
+          value={creditno}
+          onChange={(e) => setCreditno(e.target.value)}
+        />
+        <Label htmlFor="cvv" value="CVV" />
+        <TextInput
+          id="cvv"
+          type="text"
+          icon={HiKey}
+          placeholder="Enter CVV Number"
+          required
+          value={cvv}
+          onChange={(e) => setCvv(e.target.value)}
         />
 
         <Label htmlFor="image" value="Image" />
