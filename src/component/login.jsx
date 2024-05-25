@@ -1,7 +1,8 @@
 "use client";
 
-import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
+import { Button, Label, Modal, TextInput } from "flowbite-react";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export function Login() {
   const [openModal, setOpenModal] = useState(false);
@@ -44,10 +45,39 @@ export function Login() {
               <div className="mb-2 block">
                 <Label htmlFor="password" value="Your password" />
               </div>
-              <TextInput id="password" type="password" required />
+              <TextInput
+                id="password"
+                type="password"
+                required
+                placeholder="Your Password"
+              />
             </div>
             <div className="w-full">
-              <Button>Log in to your account</Button>
+              <Button
+                onClick={() => {
+                  Swal.fire({
+                    title: "Loading",
+                    icon: "info",
+                    showConfirmButton: false,
+                    timer: 1000,
+                  }).then(() => {
+                    // Perform any additional actions after the loading effect
+                    // For example, you can submit the form or navigate to another page
+                    Swal.fire({
+                      title: "Success",
+                      text: "Your payment was successful",
+                      icon: "success",
+                      showConfirmButton: false,
+                      timer: 1500,
+                    }).then(() => {
+                      // Redirect to another page
+                      window.location.href = "/";
+                    });
+                  });
+                }}
+              >
+                Log in to your account
+              </Button>
             </div>
             <div className="flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300">
               Not registered?&nbsp;

@@ -1,13 +1,17 @@
-"use client";
-
 import { Navbar, Button } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { Login } from "./login";
 import useScrollDirection from "./useScrollDirection";
+import { Link as ScrollLink } from "react-scroll";
 
 export default function Megabar() {
   const scrollDirection = useScrollDirection();
   const show = scrollDirection === "up";
+
+const handleScrollToTop = (event) => {
+  event.preventDefault();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
   return (
     <Navbar
@@ -32,21 +36,21 @@ export default function Megabar() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link href="#" className="text-xl mr-2 text-white">
+        <ScrollLink to="home" smooth={true} className="text-xl mr-2 text-white">
           Home
-        </Navbar.Link>
-        <Navbar.Link href="/search" className="text-xl text-white">
-          About
-        </Navbar.Link>
-        <Navbar.Link href="/search" className="text-xl text-white">
+        </ScrollLink>
+        <ScrollLink to="product" smooth={true} className="text-xl text-white">
+          Movie
+        </ScrollLink>
+        <ScrollLink to="search" smooth={true} className="text-xl text-white">
           Searching
-        </Navbar.Link>
-        <Navbar.Link href="#" className="text-xl text-white">
-          Pricing
-        </Navbar.Link>
-        <Navbar.Link href="#" className=" text-xl text-white">
+        </ScrollLink>
+        <ScrollLink to="member" smooth={true} className="text-xl text-white">
+          Membership
+        </ScrollLink>
+        <ScrollLink to="contact" smooth={true} className=" text-xl text-white">
           Contact
-        </Navbar.Link>
+        </ScrollLink>
       </Navbar.Collapse>
     </Navbar>
   );

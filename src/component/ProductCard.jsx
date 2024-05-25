@@ -1,21 +1,20 @@
 import noimage from "../assets/images/noimage.jpg";
 import React, { useState } from "react";
-import ProductModal from "./ProductModal";
 import { Link } from "react-router-dom";
 import { StarIcon } from "./moviecard";
+import { Modal } from "flowbite-react"
+import Movie from "../pages/movie";
 
 const ProductCard = ({ product }) => {
   const { name, image, rating, rank } = product;
   const [openModal, setOpenModal] = useState(false);
 
+    function onCloseModal() {
+      setOpenModal(false);
+    }
+
   return (
     <>
-      <ProductModal
-        isOpen={openModal}
-        setIsOpen={setOpenModal}
-        product={product}
-      />
-
       <div className=" hover:scale-110 transition-transform duration-300 transform-gpu mx-auto flex w-full max-w-[375px] flex-col overflow-hidden border-gray-100 rounded-3xl shadow-xl">
         <div className=" rounded-3xl w-[375px] shadow-2xl bg-slate-100">
           <img
@@ -25,14 +24,9 @@ const ProductCard = ({ product }) => {
             className="rounded-t-3xl justify-center h-[350px] grid object-cover"
             alt="movie.title"
           />
-          <Link
-            onClick={() => setOpenModal(true)}
-            href={`/products/${product._id}`}
-          >
+          <Link onClick={() => setOpenModal(true)}>
             <div className="group p-6 grid z-10">
-              <div
-                className="group-hover:text-cyan-700 font-bold sm:text-2xl line-clamp-1 transition-all"
-              >
+              <div className="group-hover:text-cyan-700 font-bold sm:text-2xl line-clamp-1 transition-all">
                 {name}
               </div>
               <span className="text-slate-400 pt-2 font-semibold">(2023)</span>
@@ -55,6 +49,18 @@ const ProductCard = ({ product }) => {
           </Link>
         </div>
       </div>
+      <Modal
+        className=" bg-black"
+        show={openModal}
+        size="8xl"
+        onClose={onCloseModal}
+        popup
+      >
+        <Modal.Header className="bg-black" />
+        <div className=" w-full h-full bg-black">
+          <Movie />
+        </div>
+      </Modal>
     </>
   );
 };

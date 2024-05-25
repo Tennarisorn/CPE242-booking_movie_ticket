@@ -1,25 +1,33 @@
 "use client";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import { test } from "../data/test";
+import React, { useEffect, useState } from "react";
+import { data } from "../data/moviedata";
 
 const ProductSearchForm = ({ setFilteredProducts }) => {
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
-  const [products, setProducts] = useState(test);
+  const [products, setProducts] = useState(data);
+
+  useEffect(() => {
+    // console.log("Test useEffect", searchText);
+    const filteredProducts = searchText
+      ? products.filter((product) =>
+          product.name.toLowerCase().includes(searchText.toLowerCase())
+        )
+      : products;
+    // console.log("this is test", filteredProducts);
+    setFilteredProducts(filteredProducts);
+  }, [searchText]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(searchText);
 
     const filteredProducts = searchText
       ? products.filter((product) =>
           product.name.toLowerCase().includes(searchText.toLowerCase())
         )
       : products;
-
-    // Do something with filteredProducts
-    // console.log(filteredProducts);
+    console.log("this is test", filteredProducts);
     setFilteredProducts(filteredProducts);
   };
 
@@ -42,10 +50,7 @@ const ProductSearchForm = ({ setFilteredProducts }) => {
               placeholder="Enter movie name"
               className="px-6 py-2 text-neutral w-full rounded-md flex-1 outline-none bg-white"
               value={searchText}
-              onChange={(e) => {
-                setSearchText(e.target.value);
-                console.log(e.target.value);
-              }}
+              onChange={(e) => setSearchText(e.target.value)}
             />
             <button
               type="submit"

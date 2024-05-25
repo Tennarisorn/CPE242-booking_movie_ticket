@@ -5,8 +5,12 @@ export default {
   // prefix: "tw-",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", flowbite.content()],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+      },
+    },
   },
+  variants: {},
   plugins: [flowbite.plugin(), require("daisyui")],
   daisyui: {
     themes: ["light"],

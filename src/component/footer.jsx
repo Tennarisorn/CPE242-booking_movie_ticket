@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <>
-      <footer className="footer footer-center p-10 bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-primary-content">
+      <footer className="footer footer-center p-10 bg-[#032541]">
         <aside>
           <img
             src="/logo.png"
@@ -14,14 +14,14 @@ export default function Footer() {
             clipRule="evenodd"
             className="inline-block fill-current filter grayscale"
           />
-          <p className="font-bold">
+          <p className="font-bold text-gray-300">
             TOP BK Movie Theatre Ltd. <br />
             Providing interesting movie since 2024
           </p>
-          <p>Copyright © 2024 - All right reserved</p>
+          <p className="text-gray-300">Copyright © 2024 - All right reserved</p>
         </aside>
         <nav>
-          <div className="grid grid-flow-col gap-4">
+          <div className="grid grid-flow-col gap-4 text-gray-300">
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

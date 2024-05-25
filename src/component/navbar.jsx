@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import useScrollDirection from './useScrollDirection';
+import { Modal } from "flowbite-react"
+import TicketList from "./ticket";
+import { Link as ScrollLink } from "react-scroll";
 
 export function NavbarFlow() {
   const scrollDirection = useScrollDirection();
+    const [openModal, setOpenModal] = useState(false);
   const show = scrollDirection === 'up';
+
+    function onCloseModal() {
+    setOpenModal(false);
+  }
 
   return (
     <Navbar
       fluid
-      className={`z-50 sticky top-0 bg-[#032541] ${show ? "translate-y-0" : "-translate-y-full"} transition-transform duration-300`}
+      className={`z-50 sticky top-0 bg-[#032541] ${
+        show ? "translate-y-0" : "-translate-y-full"
+      } transition-transform duration-300`}
     >
       <Navbar.Brand>
         <img src="/logo.png" className="mr-3 h-6 sm:h-9" alt="top bk logo" />
@@ -37,27 +47,40 @@ export function NavbarFlow() {
             </span>
           </Dropdown.Header>
           <Dropdown.Divider />
+          <Dropdown.Item onClick={() => setOpenModal(true)}>
+            Your Tickets
+          </Dropdown.Item>
           <Dropdown.Item>Sign out</Dropdown.Item>
         </Dropdown>
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link href="#" className="text-xl mr-2 text-white">
+        <ScrollLink
+          to="home"
+          smooth={true}
+          className="text-xl mr-2 text-white"
+        >
           Home
-        </Navbar.Link>
-        <Navbar.Link href="#" className="text-xl text-white">
-          About
-        </Navbar.Link>
-        <Navbar.Link href="/search" className="text-xl text-white">
+        </ScrollLink>
+        <ScrollLink to="product" smooth={true} className="text-xl text-white">
+          Movie
+        </ScrollLink>
+        <ScrollLink to="search" smooth={true} className="text-xl text-white">
           Searching
-        </Navbar.Link>
-        <Navbar.Link href="#" className="text-xl text-white">
-          Pricing
-        </Navbar.Link>
-        <Navbar.Link href="#" className=" text-xl text-white">
+        </ScrollLink>
+        <ScrollLink to="member" smooth={true} className="text-xl text-white">
+          Membership
+        </ScrollLink>
+        <ScrollLink to="contact" smooth={true} className=" text-xl text-white">
           Contact
-        </Navbar.Link>
+        </ScrollLink>
       </Navbar.Collapse>
+      <Modal show={openModal} size="5xl" onClose={onCloseModal} popup>
+        <Modal.Header className="bg-black" />
+        <Modal.Body className=" bg-gray-100">
+          <TicketList />
+        </Modal.Body>
+      </Modal>
     </Navbar>
   );
 };

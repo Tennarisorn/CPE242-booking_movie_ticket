@@ -8,6 +8,7 @@ import {
 } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
 function SignUp() {
   return (
@@ -85,7 +86,28 @@ function RegisterForm() {
     } else {
       console.log("Please fill in all the input fields.");
     }
+
+      Swal.fire({
+        title: "Loading",
+        icon: "info",
+        showConfirmButton: false,
+        timer: 1000,
+      }).then(() => {
+        // Perform any additional actions after the loading effect
+        // For example, you can submit the form or navigate to another page
+        Swal.fire({
+          title: "Success",
+          text: "You have successfully registered!",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          // Redirect to another page
+          window.location.href = "/";
+        });
+      });
   };
+
 
   useEffect(() => {
     if (password === reenterPassword) {

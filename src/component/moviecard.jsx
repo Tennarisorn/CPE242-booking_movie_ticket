@@ -25,7 +25,7 @@ export function StarIcon(props) {
 }
 export default function MovieCard() {
     return (
-      <div className=" flex justify-center items-center h-screen  bg-[#ffffff]">
+      <div className=" flex justify-center items-center ">
         <div className=" hover:scale-110 transition-transform duration-300 transform-gpu mx-auto bg-white rounded-3xl shadow-xl">
           <div className=" rounded-3xl w-[375px] shadow-2xl bg-slate-100">
             <img
@@ -43,14 +43,14 @@ export default function MovieCard() {
                 How to Train Your Dragon
               </a>
               <span className="text-slate-400 pt-2 font-semibold">(2023)</span>
-              {/* <div className="h-28">
+              <div className="h-28">
                 <span className="line-clamp-4 py-2 text-sm font-light leading-relaxed">
-                  Miles Morales catapults across the Multiverse, where he
-                  encounters a team of Spider-People charged with protecting its
-                  very existence. When the heroes clash on how to handle a new
-                  threat, Miles must redefine what it means to be a hero.
+                  อภินิหารไวกิ้งพิชิตมังกร ภาพยนตร์ผจญภัยไปกับเสียงฮา
+                  ในบรรยากาศของโลกย้อนยุคของเหล่าไวกิ้งที่แสนกำยำล่ำบึ้ก
+                  และมังกรแสนดุร้าย โดยสร้างจากหนังสือของเครสซิด้า โคเวลล์
+                  เรื่องราวเกิดขึ้นรอบกายไวกิ้งหนุ่มน้อยวัยทีนที่ชื่อว่า ฮิคคัพ
                 </span>
-              </div> */}
+              </div>
               <div className="grid-cols-2 flex group justify-between">
                 <div className="font-black flex flex-col">
                   <span className="text-yellow-500 text-xl">IMDB SCORE</span>

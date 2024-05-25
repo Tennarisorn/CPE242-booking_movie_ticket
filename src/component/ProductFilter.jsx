@@ -7,15 +7,15 @@ const ProductFilter = ({ filter, setFilter }) => {
     { value: "newArrivals", label: "มาแรง" },
   ];
   return (
-    <div className="flex flex-col sm:flex-row items-center mb-10 justify-between border-b border-gray-200 pb-6 pt-14">
-      <h1 className="text-4xl mb-4 sm:mb-0 font-bold tracking-tight text-neutral">
+    <div className="flex flex-col sm:flex-row items-center mb-10 justify-between border-b-2 border-gray-900 pb-6 pt-14">
+      <h1 className="text-4xl mb-4 sm:mb-0 font-bold tracking-tight ">
         ALL PRODUCTS
       </h1>
       <div className="flex flex-wrap items-center gap-2">
         <div className="relative inline-block text-left">
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text">Sort</span>
+              <span className="label-text font-bold ">Sort</span>
             </div>
             <select
               onChange={(e) => setFilter(e.target.value)}
